@@ -159,8 +159,8 @@ onUnmounted(() => {
   pointer-events: auto;
 
   /* Light theme */
-  background: linear-gradient(135deg, #ff9ec8 0%, #ffb8d9 50%, #ffc9e5 100%);
-  box-shadow: 0 2px 6px rgba(255, 158, 200, 0.5);
+  background: var(--ornament);
+  box-shadow: 0 2px 6px #26343f1f;
 }
 
 .custom-scrollbar-thumb.is-visible {
@@ -172,19 +172,19 @@ onUnmounted(() => {
 .custom-scrollbar-thumb.is-dragging {
   width: 10px;
   opacity: 1 !important;
-  background: linear-gradient(135deg, #ff7eb3 0%, #ff9ec8 50%, #ffb8d9 100%);
-  box-shadow: 0 4px 12px rgba(255, 126, 179, 0.5);
+  background: var(--accent);
+  box-shadow: 0 4px 12px #26343f2e;
 }
 
 /* Dark theme */
 .custom-scrollbar-thumb.dark-mode {
-  background: linear-gradient(135deg, #8b5cf6 0%, #a78bfa 50%, #c4b5fd 100%);
-  box-shadow: 0 2px 6px rgba(139, 92, 246, 0.4);
+  background: var(--ornament);
+  box-shadow: 0 2px 6px #00000033;
 }
 
 .custom-scrollbar-thumb.dark-mode:hover,
 .custom-scrollbar-thumb.dark-mode.is-dragging {
-  background: linear-gradient(135deg, #7c3aed 0%, #8b5cf6 50%, #a78bfa 100%);
-  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.6);
+  background: var(--accent);
+  box-shadow: 0 4px 12px #0000004d;
 }
 </style>

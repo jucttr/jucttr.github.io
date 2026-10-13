@@ -60,7 +60,10 @@ const labels: Record<string, { icon: string; title: string; sub: string }> = {
   </div>
 </template>
 <style scoped>
+/* Each cover is one pen (--cover-ink); the paper is just card stock tinted by it. */
 .post-cover {
+  --cover-ink: var(--muted);
+  --cover-tint: 7%;
   min-height: 180px;
   height: 100%;
   position: relative;
@@ -69,8 +72,13 @@ const labels: Record<string, { icon: string; title: string; sub: string }> = {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: #79539c;
-  background: #eee6f7;
+  color: var(--cover-ink);
+  background-color: color-mix(
+    in srgb,
+    var(--cover-ink) var(--cover-tint),
+    var(--card)
+  );
+  background-image: var(--paper);
   padding: 28px 12px;
   isolation: isolate;
 }
@@ -78,8 +86,15 @@ const labels: Record<string, { icon: string; title: string; sub: string }> = {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(#ffffff42 1px, transparent 1px),
-    linear-gradient(90deg, #ffffff42 1px, transparent 1px);
+    linear-gradient(
+      color-mix(in srgb, var(--cover-ink) 22%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--cover-ink) 22%, transparent) 1px,
+      transparent 1px
+    );
   background-size: 23px 23px;
   z-index: -1;
   mask-image: linear-gradient(30deg, black, transparent 80%);
@@ -88,13 +103,13 @@ const labels: Record<string, { icon: string; title: string; sub: string }> = {
   position: absolute;
   height: 190px;
   width: 190px;
-  border: 1px solid #ffffff70;
+  border: 1px solid color-mix(in srgb, var(--cover-ink) 30%, transparent);
   border-radius: 50%;
   right: -75px;
   top: -80px;
   box-shadow:
-    0 0 0 20px #ffffff15,
-    0 0 0 40px #ffffff15;
+    0 0 0 20px color-mix(in srgb, var(--cover-ink) 16%, transparent),
+    0 0 0 40px color-mix(in srgb, var(--cover-ink) 9%, transparent);
   z-index: -1;
 }
 .cover-dot {
@@ -104,7 +119,7 @@ const labels: Record<string, { icon: string; title: string; sub: string }> = {
   border-radius: 50%;
   width: 120px;
   height: 120px;
-  background: #ffffff25;
+  background: color-mix(in srgb, var(--cover-ink) 14%, transparent);
 }
 .cover-corner {
   position: absolute;
@@ -114,13 +129,13 @@ const labels: Record<string, { icon: string; title: string; sub: string }> = {
     7px "Oxanium-Medium",
     var(--font-body);
   letter-spacing: 0.14em;
-  opacity: 0.6;
+  opacity: 0.85;
 }
 .cover-icon {
   display: block;
   font-size: 43px;
   margin: 4px 0 7px;
-  opacity: 0.86;
+  opacity: 0.8;
 }
 strong {
   font:
@@ -145,35 +160,34 @@ small {
   right: 18px;
   opacity: 0.5;
 }
-.css {
-  background: #fbe4e5;
-  color: #b76f85;
+.astro {
+  --cover-ink: var(--ink-4);
 }
-.vue,
-.life {
-  background: #e2efe7;
-  color: #588f7a;
+.vue {
+  --cover-ink: var(--ink-2);
+}
+.css {
+  --cover-ink: var(--ink-7);
 }
 .notes {
-  background: #f1e5d9;
-  color: #a88969;
+  --cover-ink: var(--ink-3);
+}
+.life {
+  --cover-ink: var(--ink-5);
 }
 .typescript {
-  background: #dfebf7;
-  color: #648db2;
+  --cover-ink: var(--ink-1);
 }
 .git {
-  background: #fae7df;
-  color: #bc7e68;
+  --cover-ink: var(--ink-8);
 }
 .design {
-  background: #e5e6fa;
-  color: #8283b5;
+  --cover-ink: var(--ink-6);
 }
 .featured {
-  background: #e9e1f4;
+  --cover-ink: var(--accent);
 }
-:global(.dark .post-cover) {
-  filter: brightness(0.75) saturate(0.8);
+:global(.dark) .post-cover {
+  --cover-tint: 15%;
 }
 </style>

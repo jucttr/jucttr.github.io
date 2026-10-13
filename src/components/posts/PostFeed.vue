@@ -327,7 +327,7 @@ onUnmounted(() => window.removeEventListener("popstate", readUrl));
 }
 .post-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 25px #98566a10;
+  box-shadow: 0 8px 25px #26343f14;
 }
 .cover-link {
   display: block;
@@ -460,7 +460,7 @@ onUnmounted(() => window.removeEventListener("popstate", readUrl));
 .feed-end > span {
   width: 28px;
   height: 1px;
-  background: #e6c8d2;
+  background: var(--line);
 }
 .archive-intro {
   padding: 25px;

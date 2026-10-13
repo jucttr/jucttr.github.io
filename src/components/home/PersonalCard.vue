@@ -64,8 +64,8 @@ const props = defineProps<{ posts: PostSummary[] }>();
   align-items: center;
   justify-content: center;
   gap: 12px;
-  background: linear-gradient(115deg, var(--accent-soft), var(--card));
-  color: var(--accent);
+  background: linear-gradient(115deg, var(--line), var(--card));
+  color: var(--ornament);
 }
 .profile-top .eyebrow {
   font-size: 8px;
@@ -73,7 +73,8 @@ const props = defineProps<{ posts: PostSummary[] }>();
 }
 .profile-flower {
   font-size: 24px;
-  opacity: 0.55;
+  opacity: 0.8;
+  color: var(--accent);
 }
 .profile-spark {
   font-size: 22px;
@@ -90,7 +91,7 @@ const props = defineProps<{ posts: PostSummary[] }>();
   height: 83px;
   border-radius: 26px;
   border: 4px solid var(--card);
-  box-shadow: 0 3px 10px #98637a15;
+  box-shadow: 0 3px 10px #26343f14;
   object-fit: cover;
   transition: transform 0.3s;
 }
@@ -105,7 +106,7 @@ const props = defineProps<{ posts: PostSummary[] }>();
   height: 13px;
   border-radius: 50%;
   border: 3px solid var(--card);
-  background: #96bf99;
+  background: var(--accent);
 }
 h2 {
   margin: 7px 0 1px;
@@ -155,8 +156,8 @@ h2 {
   margin: 15px 0;
 }
 .profile-social a {
-  background: var(--accent-soft);
-  color: var(--accent);
+  background: var(--line);
+  color: var(--text);
   width: 31px;
   height: 31px;
   border-radius: 10px;
@@ -166,6 +167,7 @@ h2 {
 }
 .profile-social a:hover {
   transform: translateY(-3px);
+  color: var(--accent);
 }
 .profile-status {
   border-radius: 8px;

@@ -487,8 +487,8 @@ function tilt(id: string) {
   width: 91px;
   height: 91px;
   flex-shrink: 0;
-  border: 1px dashed #db9baf;
-  outline: 1px solid #e8c2cd80;
+  border: 1px dashed color-mix(in srgb, var(--accent) 40%, transparent);
+  outline: 1px solid color-mix(in srgb, var(--accent) 18%, transparent);
   outline-offset: 5px;
   border-radius: 50%;
   color: var(--accent);
@@ -607,93 +607,78 @@ function tilt(id: string) {
   font-size: 10px;
   white-space: nowrap;
 }
+/* Every note is a page from the same notebook: one ink, five faint paper tints. */
 .paper {
-  --paper-bg: #fbefc9;
-  --paper-ink: #665332;
-  --paper-muted: #8b7346;
-  --paper-tape: #d8bb766e;
-  --paper-line: #d5bd803d;
-  --paper-fold: #e4cc91;
+  --paper-bg: #f2f0e7;
+  --paper-ink: #26343f;
+  --paper-muted: #6b7785;
+  --paper-tape: #dad7ca85;
+  --paper-line: #d6d3c73d;
+  --paper-fold: #e5e2d7;
   color: var(--paper-ink);
 }
 .paper[data-color="rose"] {
-  --paper-bg: #fbe2e9;
-  --paper-ink: #805165;
-  --paper-muted: #9b6b7c;
-  --paper-tape: #dba6b77a;
-  --paper-line: #d5a4b23d;
-  --paper-fold: #e6bccb;
+  --paper-bg: #f1eae9;
+  --paper-tape: #d8cfcd85;
+  --paper-line: #d4cbc93d;
+  --paper-fold: #e3dcda;
 }
 .paper[data-color="mint"] {
-  --paper-bg: #e1efdf;
-  --paper-ink: #4c6b54;
-  --paper-muted: #6e8a6d;
-  --paper-tape: #aac7a685;
-  --paper-line: #9cbd973d;
-  --paper-fold: #bed8b9;
+  --paper-bg: #eaeee9;
+  --paper-tape: #d0d8cf85;
+  --paper-line: #ccd4cb3d;
+  --paper-fold: #dce1db;
 }
 .paper[data-color="sky"] {
-  --paper-bg: #e0edf9;
-  --paper-ink: #496582;
-  --paper-muted: #6c87a4;
-  --paper-tape: #a1bfda78;
-  --paper-line: #9fb8d23d;
-  --paper-fold: #bbd2e8;
+  --paper-bg: #e9ecf0;
+  --paper-tape: #ced4dc85;
+  --paper-line: #cad0d83d;
+  --paper-fold: #dae0e6;
 }
 .paper[data-color="lilac"] {
-  --paper-bg: #eee3f8;
-  --paper-ink: #705689;
-  --paper-muted: #8b729e;
-  --paper-tape: #c0a5d685;
-  --paper-line: #b59bc83d;
-  --paper-fold: #d4bfe6;
+  --paper-bg: #edeaf0;
+  --paper-tape: #d3ced885;
+  --paper-line: #cfcad43d;
+  --paper-fold: #dedae1;
 }
 .dark .paper {
-  --paper-bg: #4a4230;
-  --paper-ink: #f4e7bf;
-  --paper-muted: #d4c28f;
-  --paper-tape: #b7a16a70;
-  --paper-line: #bda56330;
-  --paper-fold: #675936;
+  --paper-bg: #201e18;
+  --paper-ink: #dcdedb;
+  --paper-muted: #8b949e;
+  --paper-tape: #3a383070;
+  --paper-line: #3a38303a;
+  --paper-fold: #2b291f;
 }
 .dark .paper[data-color="rose"] {
-  --paper-bg: #4b3542;
-  --paper-ink: #f7d6e4;
-  --paper-muted: #d6b1c2;
-  --paper-tape: #b8839b65;
-  --paper-line: #d399b530;
-  --paper-fold: #6a485b;
+  --paper-bg: #221d1e;
+  --paper-tape: #3c343670;
+  --paper-line: #3c34363a;
+  --paper-fold: #2d2628;
 }
 .dark .paper[data-color="mint"] {
-  --paper-bg: #34483e;
-  --paper-ink: #d8efd9;
-  --paper-muted: #b1ccb5;
-  --paper-tape: #82ad8c65;
-  --paper-line: #a1cba030;
-  --paper-fold: #4a6250;
+  --paper-bg: #1c211e;
+  --paper-tape: #343a3370;
+  --paper-line: #343a333a;
+  --paper-fold: #262c27;
 }
 .dark .paper[data-color="sky"] {
-  --paper-bg: #334457;
-  --paper-ink: #d5e7fb;
-  --paper-muted: #acc5de;
-  --paper-tape: #7a9bbb65;
-  --paper-line: #92b8d630;
-  --paper-fold: #4a6380;
+  --paper-bg: #1b1e23;
+  --paper-tape: #32373f70;
+  --paper-line: #32373f3a;
+  --paper-fold: #252931;
 }
 .dark .paper[data-color="lilac"] {
-  --paper-bg: #443951;
-  --paper-ink: #eee0fb;
-  --paper-muted: #cbb4de;
-  --paper-tape: #a58bbd65;
-  --paper-line: #bd9cd930;
-  --paper-fold: #604d74;
+  --paper-bg: #1f1d24;
+  --paper-tape: #38343f70;
+  --paper-line: #38343f3a;
+  --paper-fold: #2a2731;
 }
 .writing-paper {
   position: relative;
   background: var(--paper-bg);
   padding: 23px 17px 12px;
   border-radius: 2px 3px 10px 2px;
-  box-shadow: 2px 5px 12px #59411e0a;
+  box-shadow: 2px 5px 12px #26343f0f;
   transition:
     background 0.2s,
     color 0.2s;
@@ -823,7 +808,7 @@ textarea.paper-input {
   color: var(--accent);
 }
 .form-error {
-  color: #c65d69;
+  color: var(--accent);
 }
 .local-notice {
   display: flex;
@@ -898,7 +883,7 @@ textarea.paper-input {
 .wall-canvas {
   min-height: 630px;
   padding: 37px 27px 22px;
-  background-image: radial-gradient(#c9acb33d 0.9px, transparent 0.9px);
+  background-image: radial-gradient(#26343f2e 0.9px, transparent 0.9px);
   background-size: 17px 17px;
 }
 .note-grid {
@@ -917,8 +902,8 @@ textarea.paper-input {
   border-radius: 2px 3px 0 3px;
   background: var(--paper-bg);
   box-shadow:
-    2px 5px 7px #513b4210,
-    0 16px 14px -15px #513b4240;
+    2px 5px 7px #26343f10,
+    0 16px 14px -15px #26343f40;
   transform: rotate(var(--tilt, 0deg));
   transform-origin: 50% 15%;
   transition:
@@ -929,7 +914,7 @@ textarea.paper-input {
 .sticky-note:hover,
 .sticky-note:focus-within {
   transform: rotate(0deg) translateY(-3px);
-  box-shadow: 2px 8px 18px #513b421a;
+  box-shadow: 2px 8px 18px #26343f1f;
   z-index: 2;
 }
 .sticky-note.just-posted {
@@ -1082,7 +1067,7 @@ textarea.paper-input {
   min-height: 241px;
   padding: 20px 12px;
   background: transparent;
-  border: 1px dashed #d9b5c1;
+  border: 1px dashed var(--line);
   border-radius: 4px;
   color: var(--muted);
   transform: rotate(-1deg);
@@ -1111,7 +1096,7 @@ textarea.paper-input {
   bottom: 22px;
   left: 24px;
   font: 35px var(--font-body);
-  color: #ce9ead;
+  color: var(--ornament);
   transform: rotate(-25deg);
   opacity: 0.7;
 }

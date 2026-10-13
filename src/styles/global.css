@@ -3,14 +3,14 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --color-kanadeLight: #fff1f1;
-  --color-kanadeDark: #111520;
-  --color-kanadeBoxLight: #fff;
-  --color-kanadeBoxDark: #202534;
-  --color-subBoxLight: #ffe8eb;
-  --color-subTextLight: #ee8ca2;
-  --color-subBoxDark: #343044;
-  --color-subTextDark: #eeb0c2;
+  --color-kanadeLight: #edeee9;
+  --color-kanadeDark: #171c22;
+  --color-kanadeBoxLight: #f6f7f4;
+  --color-kanadeBoxDark: #1e242b;
+  --color-subBoxLight: #e2e4dd;
+  --color-subTextLight: #6b7785;
+  --color-subBoxDark: #252c34;
+  --color-subTextDark: #8b949e;
   --font-Oxanium-Medium: "Oxanium-Medium", var(--font-body);
 }
 @font-face {
@@ -34,14 +34,26 @@
   --font-code:
     "JetBrains Mono Variable", "Noto Sans SC Variable", "Noto Sans JP Variable",
     monospace;
-  --bg: #fff1f1;
-  --card: #fff;
-  --text: #4c4551;
-  --muted: #938791;
-  --accent: #d85d7e;
-  --accent-soft: #fff0f4;
-  --line: #f3e9ed;
-  --shadow: 0 5px 24px #88566a06;
+  --bg: #edeee9;
+  --card: #f6f7f4;
+  --text: #26343f;
+  --muted: #6b7785;
+  --accent: #b0392c;
+  --accent-soft: #f7ece9;
+  --line: #dcdfd8;
+  --ornament: #8a6a45;
+  --mark: #e8cdc6;
+  /* Faded pen inks for tag labels and covers. Cinnabar (--accent) is the only fresh one. */
+  --ink-1: #4a6b82;
+  --ink-2: #5c7a63;
+  --ink-3: #8a6a45;
+  --ink-4: #6f5a7d;
+  --ink-5: #3f7a72;
+  --ink-6: #79763f;
+  --ink-7: #8f4f63;
+  --ink-8: #96603f;
+  --paper: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+  --shadow: 0 5px 24px #26343f0a;
   color-scheme: light;
 }
 :root:lang(en) {
@@ -58,14 +70,25 @@
     sans-serif;
 }
 :root.dark {
-  --bg: #111520;
-  --card: #202534;
-  --text: #e4deeb;
-  --muted: #aaa2b9;
-  --accent: #f0a2bc;
-  --accent-soft: #343044;
-  --line: #343646;
-  --shadow: 0 5px 24px #00000012;
+  --bg: #171c22;
+  --card: #1e242b;
+  --text: #dcdedb;
+  --muted: #8b949e;
+  --accent: #e0655a;
+  --accent-soft: #2a2225;
+  --line: #2b323a;
+  --ornament: #a08a68;
+  --mark: #46292c;
+  --ink-1: #8fb2c9;
+  --ink-2: #97b69d;
+  --ink-3: #c4a37b;
+  --ink-4: #b79fc6;
+  --ink-5: #7fbdb2;
+  --ink-6: #b9b582;
+  --ink-7: #c490ab;
+  --ink-8: #cfa077;
+  --paper: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  --shadow: 0 5px 24px #00000024;
   color-scheme: dark;
 }
 * {
@@ -86,7 +109,8 @@ body {
   margin: 0;
   font-family: var(--font-body);
   color: var(--text);
-  background: var(--bg);
+  background-color: var(--bg);
+  background-image: var(--paper);
   font-size: 15px;
   line-height: 1.7;
   overflow-wrap: anywhere;
@@ -132,15 +156,15 @@ button:disabled {
   outline-offset: 4px;
 }
 ::selection {
-  background: #f6c8d6;
-  color: #593546;
+  background: var(--mark);
+  color: var(--text);
 }
 ::-webkit-scrollbar {
   width: 7px;
   height: 7px;
 }
 ::-webkit-scrollbar-thumb {
-  background: #eeb3c4;
+  background: var(--ornament);
   border-radius: 8px;
 }
 .skip-link {
@@ -175,7 +199,8 @@ button:disabled {
   gap: 20px;
 }
 .card {
-  background: var(--card);
+  background-color: var(--card);
+  background-image: var(--paper);
   border: 1px solid var(--line);
   border-radius: 18px;
   box-shadow: var(--shadow);
@@ -192,8 +217,12 @@ button:disabled {
   font-weight: 600;
 }
 .panel-title > span:first-child {
-  color: var(--accent);
+  color: var(--ornament);
   font-size: 18px;
+}
+/* Cinnabar is reserved for panels that hold hand-written content, not indexes. */
+.panel-title.panel-mark > span:first-child {
+  color: var(--accent);
 }
 .muted {
   color: var(--muted);
@@ -201,12 +230,15 @@ button:disabled {
 .accent {
   color: var(--accent);
 }
+.ornament {
+  color: var(--ornament);
+}
 .eyebrow {
   font-family: "Oxanium-Medium", var(--font-body);
   text-transform: uppercase;
   letter-spacing: 0.16em;
   font-size: 11px;
-  color: var(--accent);
+  color: var(--ornament);
 }
 .chip {
   display: inline-flex;
@@ -218,6 +250,38 @@ button:disabled {
   color: var(--accent);
   font-size: 12px;
   line-height: 1.8;
+}
+.chip[data-ink="1"] {
+  color: var(--ink-1);
+  background: color-mix(in srgb, var(--ink-1) 10%, transparent);
+}
+.chip[data-ink="2"] {
+  color: var(--ink-2);
+  background: color-mix(in srgb, var(--ink-2) 10%, transparent);
+}
+.chip[data-ink="3"] {
+  color: var(--ink-3);
+  background: color-mix(in srgb, var(--ink-3) 10%, transparent);
+}
+.chip[data-ink="4"] {
+  color: var(--ink-4);
+  background: color-mix(in srgb, var(--ink-4) 10%, transparent);
+}
+.chip[data-ink="5"] {
+  color: var(--ink-5);
+  background: color-mix(in srgb, var(--ink-5) 10%, transparent);
+}
+.chip[data-ink="6"] {
+  color: var(--ink-6);
+  background: color-mix(in srgb, var(--ink-6) 10%, transparent);
+}
+.chip[data-ink="7"] {
+  color: var(--ink-7);
+  background: color-mix(in srgb, var(--ink-7) 10%, transparent);
+}
+.chip[data-ink="8"] {
+  color: var(--ink-8);
+  background: color-mix(in srgb, var(--ink-8) 10%, transparent);
 }
 a.chip:hover {
   background: var(--accent);
@@ -284,7 +348,7 @@ a.chip:hover {
   text-align: center;
 }
 .empty-state > span {
-  color: var(--accent);
+  color: var(--ornament);
   font-size: 36px;
 }
 .empty-state h3 {
@@ -331,7 +395,7 @@ a.chip:hover {
   color: var(--accent);
   display: grid;
   place-items: center;
-  box-shadow: 0 4px 16px #a56b8112;
+  box-shadow: 0 4px 16px #26343f14;
 }
 .back-top[hidden] {
   display: none;
@@ -403,8 +467,8 @@ a.chip:hover {
   border-radius: 0 10px 10px 0;
 }
 .prose :not(pre) > code {
-  background: var(--accent-soft);
-  color: var(--accent);
+  background: var(--line);
+  color: var(--text);
   padding: 3px 6px;
   border-radius: 5px;
   font-size: 0.88em;

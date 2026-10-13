@@ -21,17 +21,18 @@ const posts = (await getPosts()).map(summarize);
     display: flex;
     align-items: center;
     gap: 9px;
-    color: var(--accent);
+    color: var(--text);
     font-size: 11px;
     margin: 0 0 21px;
     padding: 11px 15px;
-    border: 1px dashed #ebbbc980;
+    border: 1px dashed color-mix(in srgb, var(--accent) 35%, transparent);
     border-radius: 11px;
-    background: #ffffff25;
+    background: var(--card);
   }
   .hello-strip > span:first-child {
     font-size: 17px;
     flex-shrink: 0;
+    color: var(--accent);
   }
   .hello-strip p {
     margin: 0;

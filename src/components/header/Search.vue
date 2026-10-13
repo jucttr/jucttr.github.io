@@ -136,11 +136,11 @@ onUnmounted(() => {
   border-radius: 20px;
   background: var(--card);
   color: var(--text);
-  box-shadow: 0 20px 100px #35233133;
+  box-shadow: 0 20px 100px #171c2233;
   overflow: auto;
 }
 .search-dialog::backdrop {
-  background: #1c172a65;
+  background: #171c2278;
   backdrop-filter: blur(6px);
 }
 .search-body {

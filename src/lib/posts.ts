@@ -46,3 +46,11 @@ export function getPostId(post: CollectionEntry<"posts">): string {
 export function getTags(posts: PostSummary[]) {
   return [...new Set(posts.flatMap((post) => post.tags))];
 }
+// A tag keeps the same pen everywhere it appears: hash the label, not its position.
+export function inkOf(label: string): number {
+  let hash = 0;
+  for (let i = 0; i < label.length; i += 1) {
+    hash = (hash * 31 + label.charCodeAt(i)) % 9973;
+  }
+  return (hash % 8) + 1;
+}

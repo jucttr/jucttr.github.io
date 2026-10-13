@@ -11,14 +11,14 @@ const months = [...new Set(posts.map((p) => p.date.slice(0, 7)))];
 
 <aside class="right-sidebar" aria-label={t("sidebar.activity")}>
   <section class="card panel notice-card">
-    <h2 class="panel-title">
+    <h2 class="panel-title panel-mark">
       <span class="icon-[lucide--megaphone]" aria-hidden="true"></span>
       {t("sidebar.notice")}
       <span class="notice-dot"></span>
     </h2>
     <p>
       {t("sidebar.noticeGreeting")}
-      <span class="accent">✿</span>
+      <span class="ornament">✿</span>
     </p>
     <p>{t("sidebar.noticeText")}</p>
     <a href={`${base}/about/`} class="text-link">
@@ -118,7 +118,7 @@ const months = [...new Set(posts.map((p) => p.date.slice(0, 7)))];
     font:
       13px "Oxanium-Medium",
       var(--font-body);
-    color: #d7b1bf;
+    color: var(--ornament);
     line-height: 1.7;
   }
   .recent-panel h3 {
@@ -159,14 +159,15 @@ const months = [...new Set(posts.map((p) => p.date.slice(0, 7)))];
     font-family: var(--font-body);
     font-size: 50px;
     line-height: 1;
-    color: #ddb4c0;
+    color: var(--accent);
+    opacity: 0.75;
   }
   .quote-card p {
     white-space: pre-line;
     margin: -4px 0 15px;
     font-size: 16px;
     line-height: 2;
-    color: var(--accent);
+    color: var(--text);
   }
   .quote-source {
     font:
@@ -180,7 +181,7 @@ const months = [...new Set(posts.map((p) => p.date.slice(0, 7)))];
     right: -13px;
     bottom: -42px;
     font-size: 130px;
-    color: #e6b4c41a;
+    color: color-mix(in srgb, var(--accent) 12%, transparent);
     line-height: 1.2;
   }
   .site-notes {
@@ -190,7 +191,7 @@ const months = [...new Set(posts.map((p) => p.date.slice(0, 7)))];
   }
   .site-notes > span:first-child {
     font-size: 18px;
-    color: #91ae92;
+    color: var(--ornament);
   }
   .site-notes p {
     font-size: 11px;

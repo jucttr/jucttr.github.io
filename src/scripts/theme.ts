@@ -12,9 +12,21 @@ function getInitialTheme(): Theme {
     ? "dark"
     : "light";
 }
+// Read the paper color back from CSS so the browser UI never drifts from --bg.
+function syncThemeColor() {
+  const meta = document.querySelector<HTMLMetaElement>(
+    'meta[name="theme-color"]',
+  );
+  if (!meta) return;
+  const bg = getComputedStyle(document.documentElement)
+    .getPropertyValue("--bg")
+    .trim();
+  if (bg) meta.content = bg;
+}
 function applyTheme(theme: Theme) {
   const root = document.documentElement;
   const dark = theme === "dark";
+  syncThemeColor();
   if (root.classList.contains("dark") === dark) return;
 
   if (themeTransitionFrame !== undefined) {
@@ -26,6 +38,7 @@ function applyTheme(theme: Theme) {
   void root.offsetWidth;
   root.classList.toggle("dark", dark);
   void root.offsetWidth;
+  syncThemeColor();
 
   // Allow reactive theme updates to render before restoring hover transitions.
   themeTransitionFrame = requestAnimationFrame(() => {

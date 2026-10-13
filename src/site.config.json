@@ -1,24 +1,24 @@
 {
   "language": "zh-CN",
   "site": {
-    "name": "Kanade",
-    "logoText": "Kanade",
+    "name": "JuctTr",
+    "logoText": "JuctTr",
     "favicon": "/favicon.svg",
     "keywords": {
-      "zh-CN": ["Astro", "Kanade", "个人博客", "Sudoria", "前端开发"],
+      "zh-CN": ["Astro", "JuctTr", "个人博客", "Sudoria", "前端开发"],
       "en": [
         "Astro",
-        "Kanade",
+        "JuctTr",
         "personal blog",
         "Sudoria",
         "frontend development"
       ],
-      "ja": ["Astro", "Kanade", "個人ブログ", "Sudoria", "フロントエンド開発"]
+      "ja": ["Astro", "JuctTr", "個人ブログ", "Sudoria", "フロントエンド開発"]
     }
   },
   "author": {
     "name": {
-      "zh-CN": "苏多莉亚",
+      "zh-CN": "JuctTr",
       "en": "Sudoria",
       "ja": "スドリア"
     },

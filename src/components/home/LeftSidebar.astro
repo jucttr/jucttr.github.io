@@ -1,7 +1,7 @@
 ---
 import { t } from "../../i18n";
 import PersonalCard from "./PersonalCard.vue";
-import { categories, getTags, type PostSummary } from "../../lib/posts";
+import { categories, getTags, inkOf, type PostSummary } from "../../lib/posts";
 import { categoryLabel } from "../../data/post-options";
 import { base } from "../../config";
 interface Props {
@@ -49,7 +49,11 @@ const tags = getTags(posts);
     </h2>
     <div class="tag-cloud">
       {tags.map((tag) => (
-        <a class="chip" href={`${base}/posts/?tag=${encodeURIComponent(tag)}`}>
+        <a
+          class="chip"
+          data-ink={inkOf(tag)}
+          href={`${base}/posts/?tag=${encodeURIComponent(tag)}`}
+        >
           {tag}
         </a>
       ))}
@@ -103,31 +107,16 @@ const tags = getTags(posts);
     font-size: 10px;
     padding: 3px 8px;
   }
-  .tag-cloud .chip:nth-child(3n + 2) {
-    color: #789a91;
-    background: #eff6f2;
-  }
-  .tag-cloud .chip:nth-child(3n + 3) {
-    color: #9184af;
-    background: #f2eff9;
-  }
-  :global(.dark) .tag-cloud .chip:nth-child(3n + 2) {
-    color: #a9cdbd;
-    background: #2c3e39;
-  }
-  :global(.dark) .tag-cloud .chip:nth-child(3n + 3) {
-    color: #c0b1e0;
-    background: #363046;
-  }
   .rss-card {
     display: flex;
     align-items: center;
     gap: 10px;
     padding: 18px;
-    color: var(--accent);
+    color: var(--text);
   }
   .rss-card > span:first-child {
     font-size: 22px;
+    color: var(--accent);
   }
   .rss-card div {
     flex: 1;

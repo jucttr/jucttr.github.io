@@ -131,8 +131,11 @@ onUnmounted(() => {
   font-weight: 400;
 }
 .brand-dot {
-  color: #ffb4ca;
+  color: var(--accent);
   margin-left: -7px;
+}
+.nav-header:not(.scrolled):not(.menu-open) .brand-dot {
+  color: #e8cdc6;
 }
 nav {
   display: flex;
@@ -178,7 +181,7 @@ nav a.active::after {
   font-size: 19px;
 }
 .nav-actions button:hover {
-  background: #ffffff25;
+  background: color-mix(in srgb, currentColor 14%, transparent);
   transform: rotate(-8deg);
 }
 .nav-header.scrolled,
@@ -186,7 +189,7 @@ nav a.active::after {
   background: color-mix(in srgb, var(--card) 92%, transparent);
   color: var(--text);
   backdrop-filter: blur(18px);
-  box-shadow: 0 3px 18px #4b314511;
+  box-shadow: 0 3px 18px #26343f14;
 }
 .scrolled nav a.active,
 .scrolled .brand-flower {

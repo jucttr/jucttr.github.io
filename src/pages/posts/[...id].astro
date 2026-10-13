@@ -4,7 +4,7 @@ import { render } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PersonalCard from "../../components/home/PersonalCard.vue";
 import PostCover from "../../components/posts/PostCover.vue";
-import { getPosts, summarize, getPostId } from "../../lib/posts";
+import { getPosts, summarize, getPostId, inkOf } from "../../lib/posts";
 import { categoryLabel } from "../../data/post-options";
 import { personalInfo, base } from "../../config";
 export async function getStaticPaths() {
@@ -88,6 +88,7 @@ const older = posts[index + 1];
           {post.data.tags.map((tag) => (
             <a
               class="chip"
+              data-ink={inkOf(tag)}
               href={`${base}/posts/?tag=${encodeURIComponent(tag)}`}
             >
               # {tag}
@@ -304,7 +305,7 @@ const older = posts[index + 1];
     color: var(--muted);
   }
   .toc a span {
-    color: var(--accent);
+    color: var(--ornament);
     font:
       10px/2 "Oxanium-Medium",
       var(--font-body);
@@ -418,11 +419,11 @@ const older = posts[index + 1];
     }
     .mobile-toc {
       display: block;
-      background: var(--accent-soft);
+      background: var(--line);
       padding: 15px 20px;
       border-radius: 12px;
       margin: 25px 0;
-      color: var(--accent);
+      color: var(--text);
       font-size: 13px;
     }
     .mobile-toc summary {

@@ -84,23 +84,17 @@ import { siteInfo, personalInfo } from "../config";
   .friend-icon {
     display: block;
     font-size: 33px;
-    color: #9c82b5;
+    color: var(--ornament);
     margin-bottom: 17px;
+  }
+  .friend-card:hover .friend-icon {
+    color: var(--accent);
   }
   .friend-arrow {
     position: absolute;
     top: 22px;
     right: 19px;
     color: var(--muted);
-  }
-  .friend-card.green .friend-icon {
-    color: #66a28c;
-  }
-  .friend-card.blue .friend-icon {
-    color: #64a9c0;
-  }
-  .friend-card.pink .friend-icon {
-    color: var(--accent);
   }
   .friend-card h3 {
     font-family: "Oxanium-Medium", var(--font-body);

@@ -14,7 +14,8 @@
 .main-container {
   min-height: 40vh;
   color: var(--text);
-  background: var(--bg);
+  background-color: var(--bg);
+  background-image: var(--paper);
   transition:
     background-color 0.3s ease-in-out,
     color 0.3s ease-in-out;
