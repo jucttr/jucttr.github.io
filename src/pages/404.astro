@@ -1,0 +1,52 @@
+---
+import { t } from "../i18n";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title={t("error.title")}
+  heroTitle={t("error.heroTitle")}
+  heroSubtitle={t("error.heroSubtitle")}
+  noindex
+>
+  <div class="shell missing-page">
+    <div class="card page-card">
+      <span class="missing-number">404</span>
+      <h2>{t("error.heading")}</h2>
+      <p>{t("error.description")}</p>
+      <a href="/" class="btn">
+        {t("error.home")}
+      </a>
+      <a href="/posts/" class="btn secondary">
+        {t("error.posts")}
+      </a>
+    </div>
+  </div>
+</BaseLayout>
+<style>
+  .missing-page {
+    padding-top: 25px;
+    padding-bottom: 50px;
+    max-width: 720px;
+    text-align: center;
+  }
+  .missing-number {
+    font:
+      85px "Oxanium-Medium",
+      var(--font-body);
+    color: var(--accent);
+  }
+  .missing-page h2 {
+    font-size: 23px;
+    margin: 8px;
+  }
+  .missing-page p {
+    color: var(--muted);
+    font-size: 13px;
+    margin: 15px 0 25px;
+  }
+  .missing-page .btn {
+    margin: 5px;
+    font-size: 13px;
+  }
+</style>

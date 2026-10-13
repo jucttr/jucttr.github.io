@@ -1,0 +1,28 @@
+---
+import { t } from "../i18n";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Guestbook from "../components/Guestbook.vue";
+---
+
+<BaseLayout
+  title={t("guestbook.pageTitle")}
+  description={t("guestbook.description")}
+  heroTitle={t("guestbook.heroTitle")}
+  heroSubtitle={t("guestbook.heroSubtitle")}
+>
+  <div class="shell guestbook-shell">
+    <Guestbook client:load />
+  </div>
+</BaseLayout>
+<style>
+  .guestbook-shell {
+    padding-top: 24px;
+    padding-bottom: 42px;
+  }
+  @media (max-width: 760px) {
+    .guestbook-shell {
+      padding-top: 18px;
+      padding-bottom: 28px;
+    }
+  }
+</style>

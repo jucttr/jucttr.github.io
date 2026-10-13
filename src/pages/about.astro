@@ -1,0 +1,170 @@
+---
+import { t } from "../i18n";
+import BlogLayout from "../layouts/BlogLayout.astro";
+import { personalInfo } from "../config";
+---
+
+<BlogLayout
+  title={t("nav.about")}
+  heroTitle={t("about.heroTitle")}
+  heroSubtitle={t("about.heroSubtitle")}
+>
+  <section class="card page-card about-card">
+    <div class="about-intro">
+      <img
+        src={personalInfo.avatar}
+        width="90"
+        height="90"
+        alt={personalInfo.name}
+      />
+      <div>
+        <span class="eyebrow">{t("about.eyebrow")}</span>
+        <h2>
+          {t("about.greeting")}
+          <span class="accent">✿</span>
+        </h2>
+        <p>{t("about.roles")}</p>
+      </div>
+    </div>
+    <div class="prose">
+      <h2>{t("about.me")}</h2>
+      <p>{t("about.intro")}</p>
+      <p>{t("about.blog")}</p>
+      <blockquote>
+        <p>{t("about.quote")}</p>
+      </blockquote>
+      <h2>{t("about.interests")}</h2>
+    </div>
+    <div class="interest-grid">
+      <div>
+        <span class="icon-[lucide--code-xml]" aria-hidden="true"></span>
+        <strong>{t("about.code")}</strong>
+        <p>
+          Astro、Vue、TypeScript
+          <br />
+          {t("about.codeDescription")}
+        </p>
+      </div>
+      <div>
+        <span class="icon-[lucide--coffee]" aria-hidden="true"></span>
+        <strong>{t("about.life")}</strong>
+        <p>
+          {t("about.lifeActivities")}
+          <br />
+          {t("about.lifeDescription")}
+        </p>
+      </div>
+    </div>
+    <div class="prose">
+      <h2>{t("about.site")}</h2>
+      <p>{t("about.siteIntro")}</p>
+      <p>{t("about.siteTech")}</p>
+      <h2>{t("about.content")}</h2>
+      <p>{t("about.contentDescription")}</p>
+    </div>
+    <div class="about-links">
+      <a
+        class="btn"
+        href={personalInfo.github}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <span class="icon-[jam--github]" aria-hidden="true"></span>GitHub
+      </a>
+      <a class="btn secondary" href="/posts/">
+        {t("about.read")}
+        <span class="icon-[lucide--arrow-right]" aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="about-end">
+      {t("about.thanks")}
+      <span>✿</span>
+    </div>
+  </section>
+</BlogLayout>
+<style>
+  .about-intro {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+  }
+  .about-intro img {
+    border-radius: 26px;
+    transform: rotate(-4deg);
+    box-shadow: 5px 5px 0 var(--accent-soft);
+  }
+  .about-intro .eyebrow {
+    font-size: 9px;
+  }
+  .about-intro h2 {
+    font-size: 23px;
+    margin: 7px 0;
+  }
+  .about-intro p {
+    color: var(--muted);
+    font-size: 11px;
+    margin: 0;
+  }
+  .interest-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+  }
+  .interest-grid > div {
+    border-radius: 12px;
+    background: var(--accent-soft);
+    padding: 20px;
+  }
+  .interest-grid span {
+    color: var(--accent);
+    font-size: 25px;
+    display: block;
+    margin-bottom: 13px;
+  }
+  .interest-grid strong {
+    font-size: 14px;
+    font-weight: 400;
+  }
+  .interest-grid p {
+    font-size: 11px;
+    line-height: 2;
+    color: var(--muted);
+    margin-bottom: 0;
+  }
+  .about-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 25px 0;
+    font-size: 12px;
+  }
+  .about-end {
+    text-align: center;
+    border-top: 1px dashed var(--line);
+    margin-top: 32px;
+    padding-top: 25px;
+    color: var(--muted);
+    font-size: 11px;
+  }
+  .about-end span {
+    display: block;
+    font-size: 22px;
+    color: var(--accent);
+    margin-top: 10px;
+  }
+  @media (max-width: 480px) {
+    .about-intro {
+      flex-direction: column;
+      text-align: center;
+    }
+    .about-intro h2 {
+      font-size: 21px;
+    }
+    .interest-grid {
+      gap: 10px;
+    }
+    .interest-grid > div {
+      padding: 15px;
+    }
+  }
+</style>

@@ -1,0 +1,17 @@
+---
+import { t } from "../../i18n";
+import BlogLayout from "../../layouts/BlogLayout.astro";
+import PostFeed from "../../components/posts/PostFeed.vue";
+import PostListFallback from "../../components/posts/PostListFallback.astro";
+import { getPosts, summarize } from "../../lib/posts";
+const posts = (await getPosts()).map(summarize);
+---
+
+<BlogLayout
+  title={t("nav.posts")}
+  heroTitle={t("post.heroTitle")}
+  heroSubtitle={t("post.heroSubtitle")}
+>
+  <PostFeed posts={posts} archive client:load />
+  <PostListFallback posts={posts} />
+</BlogLayout>
