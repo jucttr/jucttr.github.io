@@ -27,7 +27,7 @@ jobs:
           package-manager: pnpm@10.33.0
         env:
           SITE_URL: https://jucttr.github.io
-          SITE_BASE: /blog
+          SITE_BASE: ""
   deploy:
     needs: build
     runs-on: ubuntu-latest
