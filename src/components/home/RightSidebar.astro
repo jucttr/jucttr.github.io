@@ -1,6 +1,7 @@
 ---
 import { t, formatDate } from "../../i18n";
 import type { PostSummary } from "../../lib/posts";
+import { base } from "../../config";
 interface Props {
   posts: PostSummary[];
 }
@@ -20,7 +21,7 @@ const months = [...new Set(posts.map((p) => p.date.slice(0, 7)))];
       <span class="accent">✿</span>
     </p>
     <p>{t("sidebar.noticeText")}</p>
-    <a href="/about/" class="text-link">
+    <a href={`${base}/about/`} class="text-link">
       {t("sidebar.meet")}
       <span class="icon-[lucide--arrow-right]" aria-hidden="true"></span>
     </a>
@@ -36,7 +37,7 @@ const months = [...new Set(posts.map((p) => p.date.slice(0, 7)))];
           <span class="recent-number">
             {String(index + 1).padStart(2, "0")}
           </span>
-          <a href={`/posts/${post.id}/`}>
+          <a href={`${base}/posts/${post.id}/`}>
             <h3>{post.title}</h3>
             <time datetime={post.date}>{formatDate(post.date)}</time>
           </a>
@@ -50,7 +51,7 @@ const months = [...new Set(posts.map((p) => p.date.slice(0, 7)))];
       {t("sidebar.archive")}
     </h2>
     {months.map((month) => (
-      <a href={`/posts/?month=${month}`}>
+      <a href={`${base}/posts/?month=${month}`}>
         <span>
           {formatDate(`${month}-01`, { year: "numeric", month: "long" })}
         </span>

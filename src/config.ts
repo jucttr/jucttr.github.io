@@ -1,6 +1,9 @@
 import settings from "./site.config.json" with { type: "json" };
 import { language, locale, ogLocale, t, type TranslationKey } from "./i18n";
 
+// Prefix for subdirectory deployments, such as GitHub Pages; empty at a domain root.
+export const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+
 // Configure language and identity in site.config.json; edit copy in i18n/*.json.
 export const siteInfo = {
   title: settings.site.name,
@@ -8,7 +11,7 @@ export const siteInfo = {
   language,
   locale: ogLocale,
   dateLocale: locale,
-  favicon: settings.site.favicon,
+  favicon: base + settings.site.favicon,
   description: t("site.description"),
   keywords: settings.site.keywords[language],
   // SITE comes from astro.config.mjs and is shared by all generated metadata.
@@ -20,26 +23,26 @@ export const headerConfig = {
   navLinks: settings.navigation.map(({ label, icon, url }) => ({
     name: t(label as TranslationKey),
     icon,
-    url,
+    url: base + url,
   })),
 };
 
 export const welcomeConfig = {
   title: t("hero.title"),
   subTitle: t("hero.subtitle"),
-  bgImage: settings.hero.image,
+  bgImage: base + settings.hero.image,
 };
 
 export const personalInfo = {
   name: settings.author.name[language],
   englishName: settings.author.handle,
-  avatar: settings.author.avatar,
+  avatar: base + settings.author.avatar,
   role: t("author.role"),
   bio: t("author.bio"),
   github: settings.author.github,
   socialLinks: settings.socialLinks.map(({ name, label, icon, url }) => ({
     name: label ? t(label as TranslationKey) : name,
     icon,
-    url: url === "$author.github" ? settings.author.github : url,
+    url: url === "$author.github" ? settings.author.github : base + url,
   })),
 };

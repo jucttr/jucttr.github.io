@@ -6,7 +6,7 @@ import PersonalCard from "../../components/home/PersonalCard.vue";
 import PostCover from "../../components/posts/PostCover.vue";
 import { getPosts, summarize, getPostId } from "../../lib/posts";
 import { categoryLabel } from "../../data/post-options";
-import { personalInfo } from "../../config";
+import { personalInfo, base } from "../../config";
 export async function getStaticPaths() {
   return (await getPosts()).map((post) => ({
     params: { id: getPostId(post) },
@@ -33,14 +33,14 @@ const older = posts[index + 1];
   <div class="reading-progress" id="reading-progress" aria-hidden="true"></div>
   <div class="shell article-layout">
     <article class="card article-detail">
-      <a href="/posts/" class="text-link">
+      <a href={`${base}/posts/`} class="text-link">
         <span class="icon-[lucide--arrow-left]" aria-hidden="true"></span>
         {t("article.back")}
       </a>
       <header class="article-header">
         <a
           class="chip"
-          href={`/posts/?category=${encodeURIComponent(post.data.category)}`}
+          href={`${base}/posts/?category=${encodeURIComponent(post.data.category)}`}
         >
           {categoryLabel(post.data.category)}
         </a>
@@ -86,7 +86,10 @@ const older = posts[index + 1];
       <div class="article-tools">
         <div class="article-tags">
           {post.data.tags.map((tag) => (
-            <a class="chip" href={`/posts/?tag=${encodeURIComponent(tag)}`}>
+            <a
+              class="chip"
+              href={`${base}/posts/?tag=${encodeURIComponent(tag)}`}
+            >
               # {tag}
             </a>
           ))}
@@ -113,13 +116,13 @@ const older = posts[index + 1];
           </strong>
           <p>
             {t("article.authorNote")}{" "}
-            <a href="/messages/">{t("common.guestbook")}</a>
+            <a href={`${base}/messages/`}>{t("common.guestbook")}</a>
           </p>
         </div>
       </div>
       <nav class="adjacent-posts" aria-label={t("article.adjacent")}>
         {newer ? (
-          <a href={`/posts/${newer.id}/`}>
+          <a href={`${base}/posts/${newer.id}/`}>
             <span>{t("article.previous")}</span>
             <strong>{newer.title}</strong>
           </a>
@@ -127,7 +130,7 @@ const older = posts[index + 1];
           <div></div>
         )}
         {older && (
-          <a href={`/posts/${older.id}/`}>
+          <a href={`${base}/posts/${older.id}/`}>
             <span>{t("article.next")}</span>
             <strong>{older.title}</strong>
           </a>

@@ -3,6 +3,7 @@ import { t } from "../../i18n";
 import PersonalCard from "./PersonalCard.vue";
 import { categories, getTags, type PostSummary } from "../../lib/posts";
 import { categoryLabel } from "../../data/post-options";
+import { base } from "../../config";
 interface Props {
   posts: PostSummary[];
 }
@@ -18,7 +19,7 @@ const tags = getTags(posts);
       {t("sidebar.categories")}
     </h2>
     {categories.map((category, index) => (
-      <a href={`/posts/?category=${encodeURIComponent(category)}`}>
+      <a href={`${base}/posts/?category=${encodeURIComponent(category)}`}>
         <span>
           <span
             class={
@@ -48,13 +49,13 @@ const tags = getTags(posts);
     </h2>
     <div class="tag-cloud">
       {tags.map((tag) => (
-        <a class="chip" href={`/posts/?tag=${encodeURIComponent(tag)}`}>
+        <a class="chip" href={`${base}/posts/?tag=${encodeURIComponent(tag)}`}>
           {tag}
         </a>
       ))}
     </div>
   </section>
-  <a class="rss-card card" href="/rss.xml">
+  <a class="rss-card card" href={`${base}/rss.xml`}>
     <span class="icon-[lucide--rss]" aria-hidden="true"></span>
     <div>
       <strong>{t("sidebar.rssTitle")}</strong>

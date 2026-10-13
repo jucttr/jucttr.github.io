@@ -1,6 +1,7 @@
 ---
 import { t } from "../i18n";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { base } from "../config";
 ---
 
 <BaseLayout
@@ -14,10 +15,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       <span class="missing-number">404</span>
       <h2>{t("error.heading")}</h2>
       <p>{t("error.description")}</p>
-      <a href="/" class="btn">
+      <a href={`${base}/`} class="btn">
         {t("error.home")}
       </a>
-      <a href="/posts/" class="btn secondary">
+      <a href={`${base}/posts/`} class="btn secondary">
         {t("error.posts")}
       </a>
     </div>

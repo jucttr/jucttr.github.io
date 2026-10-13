@@ -322,6 +322,30 @@ docker compose -f compose.yaml down
 
 仓库已提供 [netlify.toml](netlify.toml)。导入 Netlify 时可沿用其中的构建与旧路径重定向配置。使用其他静态托管平台时，填写上表中的构建参数。
 
+### GitHub Pages 部署
+
+仓库已提供 [.github/workflows/deploy.yml](.github/workflows/deploy.yml)，推送到 `master` 分支时自动构建并发布。首次使用前，在仓库的 **Settings → Pages → Source** 中选择 **GitHub Actions**。
+
+GitHub Pages 会把站点发布到 `https://<用户名>.github.io/<仓库名>/` 这样的子路径，因此需要两个环境变量：
+
+| 变量        | 值                                       |
+| ----------- | ---------------------------------------- |
+| `SITE_URL`  | `https://<用户名>.github.io`，不带仓库名 |
+| `SITE_BASE` | `/<仓库名>`，以斜杠开头                  |
+
+`SITE_URL` 必须是域名根地址，写入路径会在构建时直接报错；子路径一律通过 `SITE_BASE` 设置。配置后页面链接、图片、RSS、站点地图和 canonical 都会自动带上这个前缀。若仓库名为 `<用户名>.github.io`，则不需要设置 `SITE_BASE`。
+
+部署前可先在本地验证：
+
+```sh
+SITE_URL=https://<用户名>.github.io SITE_BASE=/<仓库名> pnpm build
+pnpm preview
+```
+
+预览地址为 `http://localhost:4321/<仓库名>/`。改用自定义域名时不要设置 `SITE_BASE`，而是在 `public/CNAME` 中写入域名，并把 `SITE_URL` 设为该域名。
+
+工作流固定了 Node.js 24 与 pnpm 10.33.0，与 `.node-version`、`engines` 和 `packageManager` 保持一致；升级运行环境时需同步修改。
+
 部署完成后可检查：
 
 - `/`：首页。

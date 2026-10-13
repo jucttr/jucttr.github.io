@@ -1,7 +1,7 @@
 ---
 import { t } from "../i18n";
 import BlogLayout from "../layouts/BlogLayout.astro";
-import { personalInfo } from "../config";
+import { personalInfo, base } from "../config";
 ---
 
 <BlogLayout
@@ -71,7 +71,7 @@ import { personalInfo } from "../config";
       >
         <span class="icon-[jam--github]" aria-hidden="true"></span>GitHub
       </a>
-      <a class="btn secondary" href="/posts/">
+      <a class="btn secondary" href={`${base}/posts/`}>
         {t("about.read")}
         <span class="icon-[lucide--arrow-right]" aria-hidden="true"></span>
       </a>

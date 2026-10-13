@@ -1,6 +1,6 @@
 ---
 import { t } from "../i18n";
-import { siteInfo, personalInfo, welcomeConfig } from "../config";
+import { siteInfo, personalInfo, welcomeConfig, base } from "../config";
 import "../styles/global.css";
 import "@fontsource-variable/noto-sans";
 import "@fontsource-variable/noto-sans-jp";
@@ -75,9 +75,9 @@ const canonical = new URL(Astro.url.pathname, siteInfo.url);
       rel="alternate"
       type="application/rss+xml"
       title={`${siteInfo.title} RSS`}
-      href="/rss.xml"
+      href={`${base}/rss.xml`}
     />
-    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="sitemap" href={`${base}/sitemap-index.xml`} />
     <title>{pageTitle}</title>
     <script is:inline>
       (() => {
@@ -112,7 +112,7 @@ const canonical = new URL(Astro.url.pathname, siteInfo.url);
       </main>
     </MainContainer>
     <footer class="site-footer">
-      <a href="/" class="footer-mark">
+      <a href={`${base}/`} class="footer-mark">
         <span class="accent">✿</span> {siteInfo.title}.
       </a>
       <p>{t("footer.message")}</p>
@@ -123,8 +123,8 @@ const canonical = new URL(Astro.url.pathname, siteInfo.url);
           Astro
         </a>{" "}
         &amp; <span class="accent">♥</span> ·{" "}
-        <a href="/rss.xml">{t("common.rss")}</a> ·{" "}
-        <a href="/about/">{t("common.aboutSite")}</a>
+        <a href={`${base}/rss.xml`}>{t("common.rss")}</a> ·{" "}
+        <a href={`${base}/about/`}>{t("common.aboutSite")}</a>
       </p>
     </footer>
     <button

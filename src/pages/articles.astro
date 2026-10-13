@@ -1,3 +1,4 @@
 ---
-return Astro.redirect("/posts/", 301);
+import { base } from "../config";
+return Astro.redirect(`${base}/posts/`, 301);
 ---

@@ -3,6 +3,7 @@ import { t, formatDate } from "../../i18n";
 import { categoryLabel } from "../../data/post-options";
 import { ref, computed, onMounted, onUnmounted, nextTick } from "vue";
 import type { PostSummary } from "../../lib/posts";
+import { base } from "../../config";
 const props = defineProps<{ posts: PostSummary[] }>();
 const dialog = ref<HTMLDialogElement>();
 const input = ref<HTMLInputElement>();
@@ -101,7 +102,7 @@ onUnmounted(() => {
         <a
           v-for="post in results"
           :key="post.id"
-          :href="`/posts/${post.id}/`"
+          :href="`${base}/posts/${post.id}/`"
           class="search-result"
           ><span class="result-icon icon-[lucide--file-text]"></span>
           <div>

@@ -5,10 +5,10 @@ import vue from "@astrojs/vue";
 import tailwindcss from "@tailwindcss/vite";
 import { loadEnv } from "vite";
 
-const { SITE_URL = "http://localhost:4321" } = loadEnv(
+const { SITE_URL = "http://localhost:4321", SITE_BASE = "" } = loadEnv(
   process.env.NODE_ENV ?? "production",
   process.cwd(),
-  "SITE_URL",
+  "SITE_",
 );
 const site = new URL(SITE_URL);
 if (
@@ -27,6 +27,8 @@ if (
 // https://astro.build/config
 export default defineConfig({
   site: site.href,
+  // Set SITE_BASE for subdirectory deployments, such as GitHub Pages (/repo).
+  base: SITE_BASE,
   output: "static",
   trailingSlash: "always",
   // Preserve the spacing between inline elements when migrating from Astro 5.

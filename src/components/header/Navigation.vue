@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { t } from "../../i18n";
 import { ref, onMounted, onUnmounted } from "vue";
-import { headerConfig } from "../../config";
+import { headerConfig, base } from "../../config";
 import { initTheme, toggleTheme } from "../../scripts/theme";
 const props = defineProps<{ pathname: string }>();
 const isDark = ref(false);
 const isAtTop = ref(true);
 const menuOpen = ref(false);
 const active = (url: string) =>
-  url === "/" ? props.pathname === "/" : props.pathname.startsWith(url);
+  url === `${base}/` ? props.pathname === url : props.pathname.startsWith(url);
 const handleScroll = () => {
   isAtTop.value = window.scrollY < 48;
 };
@@ -41,7 +41,7 @@ onUnmounted(() => {
   >
     <div class="nav-inner shell">
       <a
-        href="/"
+        :href="`${base}/`"
         class="brand"
         :aria-label="t('nav.brandHome', { site: headerConfig.title })"
         ><span class="brand-flower">✿</span>{{ headerConfig.title

@@ -8,6 +8,7 @@ import {
   categoryLabel,
   normalizeCategory,
 } from "../../data/post-options";
+import { base } from "../../config";
 const props = defineProps<{ posts: PostSummary[]; archive?: boolean }>();
 const category = ref("");
 const tag = ref("");
@@ -158,7 +159,7 @@ onUnmounted(() => window.removeEventListener("popstate", readUrl));
         :data-category="post.category"
       >
         <a
-          :href="`/posts/${post.id}/`"
+          :href="`${base}/posts/${post.id}/`"
           class="cover-link"
           :aria-label="t('post.read', { title: post.title })"
           tabindex="-1"
@@ -170,13 +171,13 @@ onUnmounted(() => window.removeEventListener("popstate", readUrl));
               ><span class="icon-[lucide--pin]"></span
               >{{ t("post.featured") }}</span
             ><a
-              :href="`/posts/?category=${encodeURIComponent(post.category)}`"
+              :href="`${base}/posts/?category=${encodeURIComponent(post.category)}`"
               >{{ categoryLabel(post.category) }}</a
             ><span class="meta-divider">/</span
             ><time :datetime="post.date">{{ formatDate(post.date) }}</time>
           </div>
           <h3>
-            <a :href="`/posts/${post.id}/`">{{ post.title }}</a>
+            <a :href="`${base}/posts/${post.id}/`">{{ post.title }}</a>
           </h3>
           <p class="post-description">{{ post.description }}</p>
           <div class="post-bottom">
@@ -184,13 +185,13 @@ onUnmounted(() => window.removeEventListener("popstate", readUrl));
               <a
                 v-for="item in post.tags.slice(0, 2)"
                 :key="item"
-                :href="`/posts/?tag=${encodeURIComponent(item)}`"
+                :href="`${base}/posts/?tag=${encodeURIComponent(item)}`"
                 ># {{ item }}</a
               >
             </div>
             <a
               class="read-post"
-              :href="`/posts/${post.id}/`"
+              :href="`${base}/posts/${post.id}/`"
               :aria-label="t('post.readFull', { title: post.title })"
               >{{ t("post.minutes", { count: post.minutes })
               }}<span class="icon-[lucide--arrow-up-right]"></span
