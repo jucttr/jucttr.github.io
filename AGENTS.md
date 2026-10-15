@@ -38,12 +38,12 @@ Astro 7.3 静态博客（主题 Kanade），三语（zh-CN / en / ja），Vue �
 
 ## 路由：什么时候去读别的文件
 
-| 你要做的事                                             | 去读                                                         |
-| ------------------------------------------------------ | ------------------------------------------------------------ |
-| 写文章、查 frontmatter 字段全表                        | `README_backup.md` → 文章写作                                |
-| 改站点名、作者、导航、显示语言                         | `src/site.config.json` + `src/i18n/`                         |
-| 升级依赖、想知道某处为何这样写                         | `docs/astro-7.3-audit.md`                                    |
-| 部署（Docker / nginx / Netlify）                       | `README_backup.md` → 部署指南                                |
-| GitHub Pages 与 `SITE_BASE`                            | `README_backup.md` → GitHub Pages 部署                       |
-| 增删分类、封面、标签枚举                               | `src/data/post-options.ts`                                   |
-| 改文章列表、排序、阅读时间逻辑                         | `src/lib/posts.ts`                                           |
+| 你要做的事                       | 去读                                   |
+| -------------------------------- | -------------------------------------- |
+| 写文章、查 frontmatter 字段全表  | `README_backup.md` → 文章写作          |
+| 改站点名、作者、导航、显示语言   | `src/site.config.json` + `src/i18n/`   |
+| 升级依赖、想知道某处为何这样写   | `docs/astro-7.3-audit.md`              |
+| 部署（Docker / nginx / Netlify） | `README_backup.md` → 部署指南          |
+| GitHub Pages 与 `SITE_BASE`      | `README_backup.md` → GitHub Pages 部署 |
+| 增删分类、封面、标签枚举         | `src/data/post-options.ts`             |
+| 改文章列表、排序、阅读时间逻辑   | `src/lib/posts.ts`                     |
