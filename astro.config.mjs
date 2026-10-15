@@ -3,7 +3,12 @@ import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 import vue from "@astrojs/vue";
 import tailwindcss from "@tailwindcss/vite";
+// import { satteri } from "@astrojs/markdown-satteri";
 import { loadEnv } from "vite";
+// import {
+//   createCalloutPlugin,
+//   createHighlightPlugin,
+// } from "./scripts/satteri-obsidian.mjs";
 
 const { SITE_URL = "http://localhost:4321", SITE_BASE = "" } = loadEnv(
   process.env.NODE_ENV ?? "production",
@@ -33,6 +38,14 @@ export default defineConfig({
   trailingSlash: "always",
   // Preserve the spacing between inline elements when migrating from Astro 5.
   compressHTML: true,
+  // Obsidian syntax support on top of the default Sätteri processor. Wikilinks
+  // and embeds are already resolved by scripts/export-corpus.mjs before a file
+  // lands here, so only callouts and ==highlights== are handled at build time.
+  // markdown: {
+  //   processor: satteri({
+  //     mdastPlugins: [createCalloutPlugin(), createHighlightPlugin()],
+  //   }),
+  // },
   integrations: [
     vue(),
     sitemap({

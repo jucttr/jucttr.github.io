@@ -502,6 +502,26 @@ a.chip:hover {
 .prose img {
   border-radius: 12px;
 }
+/* Obsidian syntax: rendered by remark-obsidian plus the CJK patch at build time.
+   Classes are produced by the plugins, so the names are fixed. */
+.prose mark {
+  background: var(--mark);
+  color: var(--text);
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+.prose .callout .callout-title {
+  font-weight: 650;
+  margin: 0 0 4px;
+}
+.prose .callout > :last-child {
+  margin-bottom: 0;
+}
+/* Unresolved [[wikilinks]]: the note is not published, so the link goes nowhere. */
+.prose a.not-found {
+  color: var(--muted);
+  text-decoration: line-through;
+}
 @media (min-width: 1440px) {
   .shell {
     max-width: 1390px;

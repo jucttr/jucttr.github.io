@@ -1,9 +1,8 @@
 # 提示
+
 该仓库的模板主题，是 [Kanade-Astro](https://github.com/sudoriaa/Kanade-Astro)，作者是 [sudoriaa](https://github.com/sudoriaa)，我感觉这个主题挺好看的，布局也不错，所以复制了过来，感兴趣可以前往查看
 
 原有仓库的 `README.md` 备份在 `README_backup.md`
-
-
 
 ## AGENTS.md 编写与维护
 
@@ -43,11 +42,11 @@
 
 ### 与其他文件的关系
 
-| 文件        | 读者         | 内容                                         |
-| ----------- | ------------ | -------------------------------------------- |
-| `README.md` | 人           | 项目说明、写作方式、部署与测试               |
-| `AGENTS.md` | 各类 AI 工具 | 红线、命令入口，以及「去哪里读细节」的路由   |
-| `CLAUDE.md` | Claude Code  | 仅它支持的特性，用 `@AGENTS.md` 引入通用部分 |
+| 文件               | 读者         | 内容                                         |
+| ------------------ | ------------ | -------------------------------------------- |
+| `README_backup.md` | 人           | 项目说明、写作方式、部署与测试               |
+| `AGENTS.md`        | 各类 AI 工具 | 红线、命令入口，以及「去哪里读细节」的路由   |
+| `CLAUDE.md`        | Claude Code  | 仅它支持的特性，用 `@AGENTS.md` 引入通用部分 |
 
 `AGENTS.md` 是开放格式，被 Codex、Cursor、Copilot、Devin 等工具共同读取；Claude Code 默认只读 `CLAUDE.md`。若在本项目使用 Claude Code，需要新建 `CLAUDE.md` 并写入 `@AGENTS.md`，否则仓库里的约定不会被加载。
 
